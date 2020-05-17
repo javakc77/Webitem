@@ -6,6 +6,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 /**
  * 报损管理表现层
+ * push测试
  */
 @Controller
 @RequestMapping("bsgl")
