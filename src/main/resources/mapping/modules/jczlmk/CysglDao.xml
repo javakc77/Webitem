@@ -2,5 +2,25 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.javakc.ssm.modules.cysgl.dao.CysglDao">
 
+    <resultMap id="cysgl" type="">
+
+        <id property="cysglNumber" column="cysgl_number"/>
+        <id property="cysglName" column="cysgl_name"/>
+        <id property="cysglLandlines" column="cysgl_landlines"/>
+        <id property="cysglState" column="cysgl_state"/>
+        <id property="cysglUsername" column="cysgl_username"/>
+        <id property="cysglTelephone" column="cysgl_telephone"/>
+        <id property="cysglAddress" column="cysgl_address"/>
+        <id property="cysglRange" column="cysgl_range"/>
+        <id property="cysglRemarks" column="cysgl_remarks"/>
+        <id property="createDate" column="CREATE_DATE"/>
+
+    </resultMap>
+
+    <select id="findList" resultType="cysgl">
+
+       select createDate,id,cysglNumber,cysglName,cysglLandlines,cysglState,cysglUsername,cysglTelephone,cysglAddress,cysglRange,cysglRemarks from tbl_cysgl where 1=1
+
+    </select>
 
 </mapper>
