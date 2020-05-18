@@ -13,23 +13,23 @@
 			</div>
 			<div class="ibox float-e-margins">
 				<form action="${path }/test/update.do" method="post" class="form-horizontal" role="form">
-					<input id="testId" name="testId" value="${testEntity.testId}" type="hidden"/>
+					<input id="testId" name="testId" value="${cysglEntity.testId}" type="hidden"/>
                     <fieldset>
                         <legend>测试管理修改基本信息</legend>
                        <div class="form-group">
                           <label class="col-sm-2 control-label">姓名</label>
                           <div class="col-sm-4">
-                             <input class="form-control" type="text" name="testName" placeholder="名字" value="${testEntity.testName}"/>
+                             <input class="form-control" type="text" name="testName" placeholder="名字" value="${cysglEntity.testName}"/>
                           </div>
                           <label class="col-sm-2 control-label" >性别</label>
                           <div class="col-sm-4">
-                             <javakc:select codeTp="sex" name="testSex" cls="form-control" def="true" value="${testEntity.testSex}"></javakc:select>
+                             <javakc:select codeTp="sex" name="testSex" cls="form-control" def="true" value="${cysglEntity.testSex}"></javakc:select>
                           </div>
                        </div>
                        <div class="form-group">
                           <label class="col-sm-2 control-label">日期</label>
                           <div class="col-sm-4">
-                             <input class="form-control" type="date"  name="testDate" value="${testEntity.testDate}"/>
+                             <input class="form-control" type="date"  name="testDate" value="${cysglEntity.testDate}"/>
                           </div>
                        </div>
                     </fieldset>
