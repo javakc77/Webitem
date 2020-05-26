@@ -7,4 +7,7 @@ import com.javakc.ssm.modules.yggl.entity.YgglEntity;
  * 员工管理数据层
  */
 public interface YgglDao extends BaseDao<YgglEntity> {
+
+    public Integer queryCount();
+
 }
