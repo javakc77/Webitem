@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.javakc.ssm.modules.yggl.dao.YgglDao">
+
+
+    <resultMap id="YgglDao" type="com.javakc.ssm.modules.yggl.entity.YgglEntity">
+        <!-- id -->
+        <id property="id" column="id" />
+        <!-- 编号  -->
+        <result property="ygglNumber" column="yggl_Number" />
+        <!-- 姓名 -->
+        <result property="ygglName" column="yggl_Name" />
+        <!-- 员工性别 -->
+        <result property="ygglSex" column="yggl_Sex" />
+        <!-- 员工电话 -->
+        <result property="ygglTelephone" column="yggl_Telephone" />
+        <!-- 家庭住址 -->
+        <result property="ygglAddress" column="yggl_Address" />
+        <!-- 任职状态 -->
+        <result property="ygglState" column="yggl_State" />
+        <!-- 备注 -->
+        <result property="ygglRemarks" column="yggl_Remarks" />
+        <!-- 民族 -->
+        <result property="ygglNation" column="yggl_Nation" />
+        <!-- 户口所在地 -->
+        <result property="ygglResidence" column="yggl_Residence" />
+        <!-- 出生日期 -->
+        <result property="ygglBirthday" column="yggl_Birthday" />
+        <!-- 紧急联系人 -->
+        <result property="ygglEmergency" column="yggl_Emergency" />
+        <!-- 紧急联系电话 -->
+        <result property="ygglEmtelephone" column="yggl_Emtelephone" />
+        <!-- 入职时间 -->
+        <result property="ygglEntrytime" column="yggl_Entrytime" />
+    </resultMap>
+
+    <select id="findList" resultMap="YgglDao">
+        select id, yggl_Number,yggl_Name,yggl_Sex,yggl_Telephone,yggl_Residence,yggl_State,yggl_Remarks,yggl_Entrytime
+        from  tbl_yggl where 1=1
+        <if test="null !=ygglName and '' != ygglName">
+            and yggl_Name like concat('%',#{ygglName},'%')
+        </if>
+    </select>
+
+    <select id="queryCount" resultType="java.lang.Integer">
+        select count(1) from tbl_yggl where 1=1
+    </select>
+
+    <insert id="insert">
+        insert into tbl_yggl(id,yggl_number ,yggl_sex ,yggl_name ,yggl_nation ,yggl_residence ,yggl_telephone,yggl_Birthday,yggl_Emergency,yggl_State,yggl_Entrytime)
+		VALUES(#{id},#{ygglNumber},#{ygglSex},#{ygglName},#{ygglNation},#{ygglResidence},#{ygglTelephone},#{ygglBirthday},#{ygglEmergency},#{ygglState},#{ygglEntrytime})
+    </insert>
+
+    <select id="get" resultType="com.javakc.ssm.modules.yggl.entity.YgglEntity">
+        select id, yggl_number as ygglnumber ,yggl_sex as ygglsex ,yggl_name as ygglname ,yggl_nation as ygglnation ,
+            yggl_residence as ygglresidence ,yggl_telephone as yggltelephone,yggl_Birthday as ygglBirthday,
+                yggl_Emergency as ygglEmergency , yggl_State as ygglState,yggl_Entrytime as ygglEntrytime
+                    from  tbl_yggl
+                        where id = #{id}
+    </select>
+
+    <update id="update" parameterType="com.javakc.ssm.modules.yggl.entity.YgglEntity">
+        update  tbl_yggl set id = #{id}, yggl_number = #{ygglNumber} ,yggl_sex = #{ygglSex} ,yggl_name = #{ygglName} ,yggl_nation = #{ygglNation} ,yggl_residence = #{ygglResidence} ,
+            yggl_telephone = #{ygglTelephone},yggl_Birthday = #{ygglBirthday},yggl_Emergency = #{ygglEmergency},
+                    yggl_State = #{ygglState},yggl_Entrytime = #{ygglEntrytime}
+                        WHERE id = #{id}
+    </update>
+
+    <delete id="delete">
+        delete from tbl_yggl where id in
+         <foreach collection="array" item="id" open="(" separator="," close=")">
+             #{id}
+         </foreach>
+    </delete>
+
+</mapper>
